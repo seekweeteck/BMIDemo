@@ -26,12 +26,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void calculateBMI(View view){
-        if(TextUtils.isEmpty(editTextHeight.getText())){
-            editTextHeight.setError("Enter your body height");
-            return;
-        }
         if(TextUtils.isEmpty(editTextWeight.getText())){
             editTextWeight.setError("Enter your body weight");
+            return;
+        }
+
+        if(TextUtils.isEmpty(editTextHeight.getText())){
+            editTextHeight.setError("Enter your body height");
             return;
         }
 
@@ -42,22 +43,24 @@ public class MainActivity extends AppCompatActivity {
 
         if (bmi < 18.5){
             imageViewResult.setImageResource(R.drawable.under);
-            textViewResult.setText("BMI: Underweight");
+            textViewResult.setText("Underweight");
         } else if(bmi>=18.5 && bmi <=24.9) {
             imageViewResult.setImageResource(R.drawable.normal);
-            textViewResult.setText("BMI: Normal");
+            textViewResult.setText("Normal");
         }else{
             imageViewResult.setImageResource(R.drawable.over);
-            textViewResult.setText("BMI: Over weight");
+            textViewResult.setText("Overweight");
         }
         imageViewResult.setVisibility(View.VISIBLE);
     }
 
     public void resetInput(View view){
         editTextWeight.setText("");
+        editTextWeight.setFocusable(true);
+        editTextWeight.requestFocus();
         editTextHeight.setText("");
+        textViewResult.setText("");
         imageViewResult.setImageResource(R.drawable.empty);
-        textViewResult.setText(getString(R.string.welcome_message));
         imageViewResult.setVisibility(View.INVISIBLE);
     }
 }
