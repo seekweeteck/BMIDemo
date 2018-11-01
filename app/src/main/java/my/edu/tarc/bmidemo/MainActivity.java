@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         double weight = Double.parseDouble(editTextWeight.getText().toString());
         height /= 100; //Convert cm to m
         double bmi = weight / (height * height);
-
+        //TODO: remove code from line 44 to 53
         if (bmi < 18.5){
             imageViewResult.setImageResource(R.drawable.under);
             textViewResult.setText("Underweight");
